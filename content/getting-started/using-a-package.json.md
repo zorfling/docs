@@ -28,7 +28,7 @@ As a bare minimum, a `package.json` must have:
 
 For example:
 
-```
+```json
 {
   "name": "my-awesome-package",
   "version": "1.0.0"
@@ -132,14 +132,14 @@ For example: The project below uses any version of the package `my_dep` that mat
 major version 1 in production, and requires any version of the package `my_test_framework`
 that matches major version 3, but only for development:
 
-```
+```json
 {
   "name": "my_package",
   "version": "1.0.0",
   "dependencies": {
     "my_dep": "^1.0.0"
   },
-  "devDependencies" : {
+  "devDependencies": {
     "my_test_framework": "^3.1.0"
   }
 }

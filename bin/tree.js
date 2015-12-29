@@ -6,10 +6,38 @@
 var path = require('path')
 var fs = require('fs')
 var strftime = require('strftime')
-var marky = require('marky-markdown')
+var kramed = require('kramed')
 var frontmatter = require('html-frontmatter')
 var mansplain = require('mansplain')
 var _ = require('lodash')
+
+var kramedOpts = {
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  smartypants: true,
+  sanitize: false, // allow script tags and stuff
+  highlight: highlight
+}
+
+var hjs = require('highlight.js')
+
+function highlight (code, language, callback) {
+  if (!language) {
+    callback(null, code)
+  }
+
+  try {
+    callback(null, hjs.highlight(language, code).value);
+  } catch (er) {
+    console.error('failed to highlight', language)
+    // most likely an unknown language.
+    callback(null, code)
+  }
+}
 
 var merge = _.merge
 
@@ -67,10 +95,14 @@ emitter.on('file', function (filepath, stat) {
     .replace(/## SEE ALSO/g, '## See Also')
 
   // Convert markdown to HTML
-  page.content = marky(page.content, {
-    sanitize: false, // allow script tags and stuff
-    prefixHeadingIds: false // don't apply safe prefixes to h1/h2... DOM ids
-  }).html()
+  // Kramed only does syntax highlighting if you pretend to be
+  // async, but it actually calls the callback synchronously
+  kramed(page.content, kramedOpts, done)
+  function done (err, content) {
+    if (err)
+      throw err
+    page.content = content
+  }
 
   // Convert npm-cmd(#) style "links" to anchor elements"
   var prefix_hash = { 1: 'cli', 5: 'files', 7: 'misc' }
