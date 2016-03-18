@@ -181,7 +181,7 @@ console and activate your instance with your license key.
     certificate and private key, or use a certificate and private key from the
     file system of your server.
 
-    ![Hostname and SSL Cert](/images/npmo-install1.png)
+    ![Hostname and SSL Cert](/public/images/npmo-install1.png)
 
 - Enter your "Billing Email" and "License Key" and hit "Continue"
 
@@ -190,7 +190,7 @@ console and activate your instance with your license key.
     needed to validate your license and activate your server instance. Note that
     a single license will allow you to run multiple instances of npm On-Site.
 
-    ![Validate License](/images/npmo-install2.png)
+    ![Validate License](/public/images/npmo-install2.png)
 
 - Secure the admin console as you wish and hit "Continue"
 
@@ -198,7 +198,7 @@ console and activate your instance with your license key.
     corporate LDAP, especially if your instance is *not* running behind a
     firewall.
 
-    ![Secure the Console](/images/npmo-install3.png)
+    ![Secure the Console](/public/images/npmo-install3.png)
 
 - Select initial configuration settings for your registry and hit "Save"
 
@@ -252,7 +252,7 @@ console and activate your instance with your license key.
     success dialog and will automatically download and start the registry
     services with your applied configuration.
 
-    ![Settings Saved](/images/npmo-install5.png)
+    ![Settings Saved](/public/images/npmo-install5.png)
 
 ### 4. Start and verify the registry services
 
@@ -262,7 +262,7 @@ top-left panel does not say "Starting", then hit the "Start Now" button.
 
 - Wait for the registry services to start
 
-    ![Dashboard Starting](/images/npmo-install6.png)
+    ![Dashboard Starting](/public/images/npmo-install6.png)
 
     Once all the containerized registry services have been downloaded and
     started, the Dashboard will prompt you to reload the page to add panels for
@@ -270,7 +270,7 @@ top-left panel does not say "Starting", then hit the "Start Now" button.
 
 - Reload the Dashboard
 
-    ![Dashboard Metrics](/images/npmo-install7.png)
+    ![Dashboard Metrics](/public/images/npmo-install7.png)
 
     Your npm On-Site registry is ready to use!
 

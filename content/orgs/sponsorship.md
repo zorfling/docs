@@ -7,13 +7,13 @@ featured: true
 
 ## Sponsorship Types
 
-![org-sponsorship levels](/images/orgs/ships-dashboard.png)
+![org-sponsorship levels](/public/images/orgs/ships-dashboard.png)
 
 Let's say we have an Organization, `@ag_org`. This Organization
-was created by user `@ag_dubs`, and therefore she is the [`Super 
-Admin`]. 
+was created by user `@ag_dubs`, and therefore she is the [`Super
+Admin`].
 
-![super admin](/images/orgs/ships-superadmin.png)
+![super admin](/public/images/orgs/ships-superadmin.png)
 
 Being a Super Admin, she adds 3 members to her team:
 
@@ -37,7 +37,7 @@ By default, when the Super Admin added him to the Organization, `JacquesDerrida`
 was set as a member of the Organization, **paid by the current organization**.
 This appears in the UI like this:
 
-![paid by current org](/images/orgs/ships-paidcurrent.png)
+![paid by current org](/public/images/orgs/ships-paidcurrent.png)
 
 - Because `JacquesDerrida` is a `developer` in the org, they can:
   - Be added to any/all of the Organization's teams,
@@ -54,19 +54,19 @@ This appears in the UI like this:
 ### Paid by Self or Another Organization
 
 - #### Paid for by Another Organization
-  
+
   When Super Admin, `@ag_dubs`, added `CarlSagan` to the Organization, `CarlSagan`
   already belonged to another Organization (`@nasa-org`, duh).
 
   By default, when `CarlSagan` was added to the Organization, he was set as a member
   of the Organization, **paid by another scope**. This appears in the UI like this:
 
-  ![paid, but not by the org](/images/orgs/ships-paidother.png)
+  ![paid, but not by the org](/public/images/orgs/ships-paidother.png)
 
   As a result, `CarlSagan` has the same permissions as `JacquesDerrida`, above.
 
   - #### Paid for by Self
-  
+
     As a subscriber to Private Packages, you can understand your sponsorship as "sponsoring
     yourself". As a result, a subscriber to private packages would have had the same
     default behavior as occured for `CarlSagan`, i.e., the previous sponsorship would
@@ -74,14 +74,14 @@ This appears in the UI like this:
     packages will appear in the Organization dashboard as someone who is `paid` but
     `not by the current org`. This appears in the UI the same as above:
 
-    ![paid, but not by the org](/images/orgs/ships-paidother.png)
+    ![paid, but not by the org](/public/images/orgs/ships-paidother.png)
 
   - #### Changing Sponsorship
 
     If a user is a subscriber to private packages, this sponsorship scope will
     trump all other potential sponsorships. If you would like to change this, i.e.,
     offer sponsorship to a user who already has another sponsorship (org or private pkgs),
-    please contact [support@npmjs.com](mailto:support@npmjs.com). 
+    please contact [support@npmjs.com](mailto:support@npmjs.com).
 
 - ### Not Paid
 
@@ -93,7 +93,7 @@ This appears in the UI like this:
   `@ag-org`** by default. However, Super Admin `@ag_dubs` opted to cancel `@ag-org`'s
   sponsorship of `EmmaGoldman`. This status appears in the UI like this:
 
-  ![not paid](/images/orgs/ships-notpaid.png)
+  ![not paid](/public/images/orgs/ships-notpaid.png)
 
   - Because `EmmaGoldman` is a `developer` in the org, they can:
     - Be added to any/all of the Organization's teams,
@@ -113,4 +113,4 @@ This appears in the UI like this:
     - Collaborate on and publish any private packages, even if their team membership
       would otherwise grant them access
 
-[`Super Admin`]: /orgs/roles#Super-Admin    
+[`Super Admin`]: /orgs/roles#Super-Admin

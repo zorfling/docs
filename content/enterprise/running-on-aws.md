@@ -27,22 +27,22 @@ In AWS, a private virtual server is called an “EC2 instance.” We’ll need t
 
 To create a security group, click “Security Groups” under “Network & Security” in the vertical navigation bar on the left, then click the blue “Create Security Group” button near the top.
 
-![Security Group List](/images/npmo-aws1.png)
+![Security Group List](/public/images/npmo-aws1.png)
 
 The ports needed for inbound traffic include:
 
 ```
-Port | Reason           
+Port | Reason
 ---- | -----------------
-8080 | Registry         
-8081 | Website          
-8082 | Auth endpoints   
+8080 | Registry
+8081 | Website
+8082 | Auth endpoints
 8800 | Admin web console
 ```
 
 You’ll also need SSH access into your instance, so include port 22 in your security group. Then give your security group a name that you will recognize later, like “npmo”:
 
-![Security Group Inbound](/images/npmo-aws2.png)
+![Security Group Inbound](/public/images/npmo-aws2.png)
 
 In a production environment, you’ll probably want to front the registry and website with a load balancer or routing layer, using a DNS name and standard ports (80 for HTTP and 443 for HTTPS). For purposes of this walkthrough, though, we’ll do without that initially and just access the services directly on the ports to which they bind.
 
@@ -53,47 +53,47 @@ Now that we have a security group defined, we’re ready to launch an EC2 instan
 
 Click on “Instances” under “Instances” in the left navigation panel, then click the blue “Launch Instance” button.
 
-![Instance List](/images/npmo-aws3.png)
+![Instance List](/public/images/npmo-aws3.png)
 
 This starts the multi-step instance wizard.
 
 Our first step is to select a base Amazon Machine Image (or AMI) as a starting point. npm On-Site supports Ubuntu 14+, CentOS 7, and RHEL 7. For this walkthrough, let’s assume CentOS 7. You can use the top `centos 7` search result in the “AWS Marketplace.” Just make sure it’s 64-bit. Click the blue “Select” button.
 
-![Launch Step 1](/images/npmo-aws4.png)
+![Launch Step 1](/public/images/npmo-aws4.png)
 
 The next step is choosing an instance type. This determines how many resources your server will be allocated. We recommend using an `m3.large`. Select the radio button in the first column of the table, then click “Next: Configure Instance Details” on the bottom right.
 
-![Launch Step 2](/images/npmo-aws5.png)
+![Launch Step 2](/public/images/npmo-aws5.png)
 
 Go with default instance details, then click “Next: Add Storage” on the bottom right.
 
-![Launch Step 3](/images/npmo-aws6.png)
+![Launch Step 3](/public/images/npmo-aws6.png)
 
 The next step is to configure storage volumes for your instance. We recommend adding an EBS volume that has at least 50 GB. We’ll use this volume to store the data for our npm On-Site registry, and using EBS will make it easy to create snapshots of your package data for backup or transfer purposes.
 
 Click “Add New Volume” button, select “EBS” as the “Volume Type,” and enter your desired amount of storage in “Size.” Then click the “Next: Tag Instance” button on the bottom right.
 
-![Launch Step 4](/images/npmo-aws7.png)
+![Launch Step 4](/public/images/npmo-aws7.png)
 
 Give your instance a name and click “Next: Configure Security Group.”
 
-![Launch Step 5](/images/npmo-aws8.png)
+![Launch Step 5](/public/images/npmo-aws8.png)
 
 Choose “Select an existing security group” at the top, then select the Security Group you created in step 1 from the list. Next, click the blue “Review and Launch.”
 
-![Launch Step 6](/images/npmo-aws9.png)
+![Launch Step 6](/public/images/npmo-aws9.png)
 
 Review your settings and click the blue “Launch” instance when you’re satisfied. This will open a dialog to select or create a key pair that you’ll need to access your instance over SSH.
 
-![Launch Step 7](/images/npmo-aws10.png)
+![Launch Step 7](/public/images/npmo-aws10.png)
 
 In the dialog, select “Create a new key pair” if you don’t already have one. Give it a name and click “Download Key Pair.” Remember where you save this file, as you’ll need it to SSH into your server. Once you’ve downloaded the `.pem` key pair file, click “Launch Instances” in blue.
 
-![Key Pair](/images/npmo-aws11.png)
+![Key Pair](/public/images/npmo-aws11.png)
 
 Wait for your instance to launch, and view its status in the “Instances” list.
 
-![Instance Created](/images/npmo-aws12.png)
+![Instance Created](/public/images/npmo-aws12.png)
 
 Note that if you’re running your EC2 instance in an AWS VPC virtual private cloud, then you may need to explicitly set your network interface MTU setting to 1500. You can read about why and how to do this in <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.html" target="_blank">the AWS docs</a>.
 
@@ -150,8 +150,8 @@ Superblock backups stored on blocks:
 	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
 	4096000, 7962624, 11239424
 
-Allocating group tables: done                            
-Writing inode tables: done                            
+Allocating group tables: done
+Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
@@ -244,7 +244,7 @@ Once that’s done, complete the installation by configuring your On-Site instan
 
 When you reach the Settings page, find the “Storage” section and change the `/usr/local/lib/npme` path prefix to `/data/npmo` for all configured paths:
 
-![Storage Settings](/images/npmo-aws13.png)
+![Storage Settings](/public/images/npmo-aws13.png)
 
 For testing purposes, you may want to select “Open” as the “Authentication” option.
 
@@ -252,7 +252,7 @@ Once you save your configuration settings, you’ll be prompted to start the reg
 
 Once you see a status of “Started,” your registry is ready for use!
 
-![Started](/images/npmo-aws14.png)
+![Started](/public/images/npmo-aws14.png)
 
 <a name="use-your-private-registry"></a>
 ## 5. Use your private registry
@@ -279,7 +279,7 @@ $ npm publish
 
 Visit your registry’s website at `http://<your-server>:8081/` and find the `@demo/test-pkg` package under “recently updated packages.”
 
-![Published](/images/npmo-aws15.png)
+![Published](/public/images/npmo-aws15.png)
 
 Now, let’s make sure we can install our private package:
 

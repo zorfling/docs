@@ -7,7 +7,7 @@ featured: true
 
 As stated a few pages back in our example:
 
-![install order](/images/install-order.png)
+![install order](/public/images/install-order.png)
 
 If you, and your development team, use a `package.json`, as well
 as the interactive `npm install` command to add pkgs (like most
@@ -28,7 +28,7 @@ you want to do that.
 
 Let's jump back to an example application from a few examples ago:
 
-![app](/images/npm3deps8.png)
+![app](/public/images/npm3deps8.png)
 
 In this example, our app has the following `package.json`:
 
@@ -55,13 +55,13 @@ In this example, our app has the following `package.json`:
 
 On an `npm install` we will see this in our terminal:
 
-![npm install](/images/npm3deps14.png)
+![npm install](/public/images/npm3deps14.png)
 
 Now, let's say a developer on our team decides to complete a feature that
 requires that they update Module A to v2.0, which now has a dependency on
 Module B v2.0, instead of, as previously, Module B v1.0.
 
-![module a v2](/images/npm3deps9.png)
+![module a v2](/public/images/npm3deps9.png)
 
 Our developer uses the interactive `npm install` command to install the new
 version of Module A, and save it to the `package.json`:
@@ -72,13 +72,13 @@ npm install mod-a@2 --save
 
 The terminal outputs this:
 
-![interactive install mod a](/images/npm3deps15.png)
+![interactive install mod a](/public/images/npm3deps15.png)
 
 We now have something that looks like this:
 
-![tree with mod a v2 interactive](/images/npm3deps10.png)
+![tree with mod a v2 interactive](/public/images/npm3deps10.png)
 
-Now let's say that our developer finished the feature requiring the new 
+Now let's say that our developer finished the feature requiring the new
 version of Module A and pushes the application to a testing server
 that runs `npm install` on the new `package.json`:
 
@@ -105,11 +105,11 @@ that runs `npm install` on the new `package.json`:
 
 The testing server's log shows this:
 
-![tree with mod a v2 packagejson](/images/npm3deps16.png)
+![tree with mod a v2 packagejson](/public/images/npm3deps16.png)
 
 Which, when visualized, looks like this:
 
-![totally diff dep tree](/images/npm3deps17.png)
+![totally diff dep tree](/public/images/npm3deps17.png)
 
 Whoa, what?! This tree is completely different than the tree that
 exists on our developer's local machine. What happened?
@@ -120,7 +120,7 @@ When our developer updated Module A using the interactive `npm install`
 Module A v2.0 was functionally the **last** package installed. Because
 our developer had done an `npm install` when they first started working
 on the project, all modules listed in the `package.json` were already
-installed in the `node_modules` folder. **Then** Module A v2.0 was 
+installed in the `node_modules` folder. **Then** Module A v2.0 was
 installed.
 
 It follows, then, that Module Bv1.0, a top level dependency because of
